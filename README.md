@@ -519,7 +519,7 @@ If id=null list all the messages else read the message of the id
 | Parameter | Type | REQUIRED | Remarks |
 | - | - | - | - |
 | access_token | string | true | |
-| uid/username | int/string | true |uid OR usernmae|
+| uid/username | int/string | true |uid OR username|
 | size | int | true |420: 420 * 560, 413: 413 * 579|
 
 ###### Return
