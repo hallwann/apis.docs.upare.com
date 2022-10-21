@@ -35,7 +35,9 @@
 
 OAuth2.0 authorize api
 
-###### Usage: 获取authorization code
+###### 用法: 获取authorization code
+
+###### Usage: Get authorization code
 
 **url:** /api/Oauth/authorize
 
@@ -61,13 +63,11 @@ OAuth2.0 authorize api
 
 ###### Example
 
-> 
 > 请求
 > https://www.upare.com/apis/Oauth/authorize/?client_id=123050457758183&redirect_uri=http://www.example.com/response&response_type=code
 > 
 > 同意授权后会重定向
 > http://www.example.com/response&code=CODE
-> 
 
 ###### Return
 
@@ -79,7 +79,9 @@ OAuth2.0 authorize api
 
 #### 2.1.2 access token
 
-###### Usage: 获取access_token
+###### 用法: 获取access_token
+
+######Usage: Get the access_token
 
 **url:** /api/Oauth/accessToken
 
@@ -119,9 +121,9 @@ OAuth2.0 authorize api
 
 ###### Return
 
- ```json
+```json
  {"error_code":0,"api_uri":"URI","access_token": "ACCESS_TOKEN","refresh_token": "REFRESH_TOKEN","expires_in": 1234,"remind_in":3600,"uid":12341234}
- ```
+```
 >  **access_token** (string): 用户授权的唯一票据，用于调用开放接口，同时也是第三方应用验证用户登录的唯一票据，第三方应用应该用该票据和自己应用内的用户建立唯一影射关系，来识别登录状态，不能使用本返回值里的UID字段来做登录识别。
 >
 >  **refresh_token** (string): grant_type为refresh_token时可通过refresh_token获得access_token。
@@ -130,7 +132,9 @@ OAuth2.0 authorize api
 
 #### 2.1.3 access token delete
 
-###### Usage: 删除输入的access_token
+###### 用法: 删除输入的access_token
+
+###### Usage: Delete the access_token
 
 **url:** /api/Oauth/delete
 
@@ -148,7 +152,9 @@ OAuth2.0 authorize api
 
 #### 2.1.4 access token revoke
 
-###### Usage: 撤销输入的access_token
+###### 用法: 撤销输入的access_token
+
+###### Usage: Revoke the access_token
 
 **url:** /api/Oauth/revoke
 
@@ -189,7 +195,9 @@ OAuth2.0 authorize api
 
 #### 2.2.1 User login
 
-###### Usage: 用户登录
+###### 用法: 用户登录
+
+###### Usage: User login
 
 **url:** /api/User/login
 
@@ -217,7 +225,9 @@ OAuth2.0 authorize api
 
 #### 2.2.2 User register
 
-###### Usage: 用户注册
+###### 用法: 用户注册
+
+###### Usage: User register
 
 **url:** /api/User/register
 
@@ -245,7 +255,9 @@ OAuth2.0 authorize api
 
 ##### 2.2.3.1 Set avatar
 
-###### Usage: 已经登录的用户上传头像
+###### 用法: 已经登录的用户设置头像
+
+###### Usage: Set logged avatar
 
 **url:** /api/User/setAvatar
 
@@ -254,15 +266,27 @@ OAuth2.0 authorize api
 | Parameter | Type | REQUIRED | Remarks |
 | - | - | - | - |
 | avatar | file | true | 头像 |
+| action | string | false | list/delete/active |
 
 ###### Return
 
  ```json
  {"error_code":0,"api_uri":"URI"}
  ```
+###### Requirements
+
+> The image format must be jpg or png (图片格式应该是jpg或png);
+> File requirements are image types (文件类型应该是图片);
+> The image background should be white (图像背景应该是白色);
+> The file size should be between 40KB and 2MB (文件应该在40KB到2MB之间);
+> The image width should between 412 pixels and 600 pixels (图像宽在:412 - 600像素之间);
+> The image height should between 578 pixels and 800 pixels (图像高在:412 - 600像素之间);
+
 ##### 2.2.3.2 Set user basic information
 
-###### Usage: 登录用户修改基本信息
+###### 用法: 登录用户修改基本信息
+
+###### Usage: Modify basic information of logged user
 
 **url:** /api/User/modifyBasicInfo
 
@@ -284,7 +308,9 @@ OAuth2.0 authorize api
  ```
 ##### 2.2.3.3 Set user detail information
 
-###### Usage: 登录用户修改详细信息
+###### 用法: 登录用户修改详细信息
+
+###### Usage: Modify details of logged user
 
 **url:** /api/User/modifyDetailInfo
 
@@ -309,7 +335,9 @@ OAuth2.0 authorize api
  ```
 ##### 2.2.3.4 Set sns unbind
 
-###### Usage: 设置社会化登录
+###### 用法: 解绑社会化登录
+
+###### Usage: Unbind SNS accounts
 
 **url:** /api/User/unbind
 
@@ -337,9 +365,9 @@ OAuth2.0 authorize api
 
 #### 2.2.4 User SNS register
 
-###### Usage: 用户通过社会化账号注册
+###### 用法: 用户通过社会化账号注册. 如果type=reg 注册一个新的用户，如果type=log绑定已存在的uid
 
-Register a uid to bind the SNS account. if type=reg register a new user else if type=log bind a exist uid
+##### Usage: Register a uid to bind the SNS account. if type=reg register a new user else if type=log bind a exist uid
 
 **url:** /api/User/snsreg
 
@@ -360,7 +388,9 @@ Register a uid to bind the SNS account. if type=reg register a new user else if 
  ```
 #### 2.2.5 Validate unique username
 
-###### Usage: 验证输入的用户名是否存在
+###### 用法: 验证输入的用户名是否存在
+
+###### Usage: Validate the unique username 
 
 **url:** /api/User/validateUniqueUsername
 
@@ -384,7 +414,9 @@ Register a uid to bind the SNS account. if type=reg register a new user else if 
 
 #### 2.2.6 Validate unique email
 
-###### Usage: 验证输入的邮箱是否存在
+###### 用法: 验证输入的邮箱是否存在
+
+###### Usage: Validate the unique email
 
 **url:** /api/User/validateUniqueEmail
 
@@ -407,7 +439,9 @@ Register a uid to bind the SNS account. if type=reg register a new user else if 
 
 #### 2.2.7 Send email or mobile verification code
 
-###### Usage: 向邮件或手机发送验证码
+###### 用法: 向邮件或手机发送验证码
+
+###### Usage: Send the code to a phone or an email
 
 **url:** /api/User/sendcode
 
@@ -431,7 +465,9 @@ Register a uid to bind the SNS account. if type=reg register a new user else if 
 
 #### 2.2.8 Validate communication code
 
-###### Usage: 验证通过邮件或手机收到的验证吗
+###### 用法: 验证通过邮件或手机收到的验证码
+
+###### Usage: Validate the code received
 
 **url:** /api/User/validateCommunicationCode
 
@@ -449,7 +485,9 @@ Register a uid to bind the SNS account. if type=reg register a new user else if 
  ```
 #### 2.2.9 User messages
 
-###### Usage: 获取用户站内短信
+###### 用法: 获取用户站内短信
+
+###### Usage: Get a user's messages
 
 If id=null list all the messages else read the message of the id
 
@@ -469,9 +507,10 @@ If id=null list all the messages else read the message of the id
 
 #### 2.2.10 User avatar
 
-###### Usage: 获取不同尺寸的用户头像
+###### 用法: 第三方获取不同尺寸的用户头像
 
-Get user's photo in different sizes
+###### Usage: Get user's avatar in different sizes
+
 
 **url:** /api/User/avatar
 
@@ -500,9 +539,9 @@ Get user's photo in different sizes
 
 #### 2.2.11 User uid
 
-###### Usage: 通过用户名获取用户uid
+###### 用法: 通过用户名获取用户uid
 
-Get user's uid
+###### Usage: Get user's uid by username
 
 **url:** /api/User/uid
 
@@ -521,9 +560,9 @@ Get user's uid
 
 #### 2.2.12 User avatar upload api
 
-###### Usage: 第三方通过uid上传头像
+###### 用法: 第三方通过uid上传头像
 
-Upload user's avatar in the third app
+###### Usage: Upload user's avatar in the third app
 
 **url:** /api/User/avatarUpload
 
@@ -548,15 +587,32 @@ Upload user's avatar in the third app
 | 100004 | Validation failed | system.common  | 上传验证失败（原因） |
 | 202301 | Fail to upload avatar | api.User.setting  | 上传头像失败 |
 
+###### Requirements
+
+> The image format must be jpg or png (图片格式应该是jpg或png);
+> File requirements are image types (文件类型应该是图片);
+> The image background should be white (图像背景应该是白色);
+> The file size should be between 40KB and 2MB (文件应该在40KB到2MB之间);
+> The image width should between 412 pixels and 600 pixels (图像宽在:412 - 600像素之间);
+> The image height should between 578 pixels and 800 pixels (图像高在:412 - 600像素之间);
+
 ### 2.3 Calendar
 
 #### 2.3.1 Calendar events
+
+###### 用法: 获取登录用户待办事宜
+
+###### Usage: Get logged user's to-do events
 
 | error_code (int) | Message(string) | URI | Remarks |
 | :-: | :-: | :-: | :-: |
 | 203101 | No to-do events | api.Calendar.events  | 无代办事宜 |
 
 #### 2.3.2 Calendar add event
+
+###### 用法: 登录用户添加待办事宜
+
+###### Usage: Logged user add to-do events
 
 | error_code (int) | Message(string) | URI | Remarks |
 | :-: | :-: | :-: | :-: |
@@ -574,9 +630,9 @@ Upload user's avatar in the third app
 
 ##### 2.4.1.1 List friends
 
-###### Usage:
+###### 用法: 通过登录uid获取用户列表
 
-Get friends of logged uid
+###### Usage: Get friends of logged uid
 
 **url:** /api/User/friends
 
@@ -584,9 +640,9 @@ Get friends of logged uid
 
 ##### 2.4.1.2 Make a friend
 
-###### Usage:
+###### 用法: 向指定uid发出好友申请
 
-Become friend to the uid input
+###### Usage: Become friend to the uid input
 
 **url:** /api/User/friendmake
 
@@ -598,9 +654,9 @@ Become friend to the uid input
 
 ##### 2.4.1.3 Delete a friend
 
-###### Usage:
+###### 用法: 删除指定uid的好友
 
-Remove friend to the uid input
+###### Usage: Remove friend to the uid input
 
 **url:** /api/User/frienddel
 
@@ -612,9 +668,9 @@ Remove friend to the uid input
 
 ##### 2.4.1.4 Friends recommend
 
-###### Usage:
+###### 用法: 推荐好友
 
-Recommend friends for logged user
+###### Usage: Recommend friends for logged user
 
 **url:** /api/User/friendsrecommend
 
@@ -635,7 +691,9 @@ Recommend friends for logged user
 
 #### 2.6.1 Captcha
 
-###### Usage: 获取图片验证码
+###### 用法: 获取图片验证码
+
+###### Usage: Get a captcha
 
 **url:** /api/Image/captcha
 
@@ -648,7 +706,9 @@ Recommend friends for logged user
 
 #### 2.6.2 Captcha verify
 
-###### Usage: 图像验证码验证
+###### 用法: 图像验证码验证
+
+###### Usage: Validate a captcha
 
 **url:** /api/Image/captchaVerify
 
@@ -668,7 +728,9 @@ Recommend friends for logged user
 
 #### 2.6.3 Encrypt a picture
 
-###### Usage: 加密图像
+###### 用法: 加密图像
+
+###### Usage: Encrypt a picture
 
 **url:** /api/Image/chaos
 
@@ -689,7 +751,9 @@ Recommend friends for logged user
 
 #### 2.6.4 Decrypt a picture
 
-###### Usage: 通过密码解密图像
+###### 用法: 通过密码解密图像
+
+###### Usage: Decrypt a picture by password
 
 **url:** /api/Image/order
 
